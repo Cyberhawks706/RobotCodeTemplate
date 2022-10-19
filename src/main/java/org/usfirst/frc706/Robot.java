@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
+import org.usfirst.frc706.subsystems.CameraDaemon;
+
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.*;
 
@@ -46,6 +48,7 @@ public class Robot extends TimedRobot {
 	public ColorSensorV3 colorSensor = new ColorSensorV3(i2cport);
 
 	public void robotInit() {
+		CameraDaemon.robotInit(); //Starts cameraserver
 		System.out.println("Started");
 		Components.init();
 		oi = new IO();
