@@ -9,6 +9,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
+import org.usfirst.frc706.commands.Drive;
+import org.usfirst.frc706.commands.LimelightTrack;
 import org.usfirst.frc706.subsystems.CameraDaemon;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -35,11 +37,8 @@ public class Robot extends TimedRobot {
 	public static boolean auto;
 	public static DriverStation driverStation;
 	public static TalonSRX _talon;
-	////public static UsbCamera drivercam;
-	////public static UsbCamera drivercam2;
-	////public static UsbCamera visioncam;
-
 	public Color detectColor;
+
 
 	
 
@@ -54,6 +53,7 @@ public class Robot extends TimedRobot {
 		oi = new IO();
 		driverStation = DriverStation.getInstance();
 		auto = driverStation.isAutonomous();
+	
 		//Components.ahrs.calibrate();
 		
 	}

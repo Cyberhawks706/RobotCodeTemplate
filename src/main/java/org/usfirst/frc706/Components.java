@@ -8,7 +8,8 @@ import org.usfirst.frc706.subsystems.DashboardDaemon;
 import org.usfirst.frc706.subsystems.PIDDaemon;
 
 import org.usfirst.frc706.commands.Clock;
-
+import org.usfirst.frc706.commands.Drive;
+import org.usfirst.frc706.commands.LimelightTrack;
 
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.networktables.NetworkTable;
@@ -27,6 +28,8 @@ public class Components {
     public static DashboardDaemon daemon;
     public static PIDDaemon PIDDaemon;
     public static PIDController turnController;
+    public static Drive drive;
+    public static LimelightTrack limelighttrack;
 
     public static BrushlessSparkWithPID sparkWheelFR;
     public static BrushlessSparkWithPID sparkWheelFL;
@@ -54,6 +57,8 @@ public class Components {
         PIDDaemon = new PIDDaemon();
         configtable = new Config();
         networkTableInstance = NetworkTableInstance.getDefault();
+        drive = new Drive();
+        limelighttrack = new LimelightTrack();
         
         sparkWheelFR = new BrushlessSparkWithPID(Constants.SparkIDs.sparkWheelFR, Constants.PID.Wheels.kP, Constants.PID.Wheels.kI, Constants.PID.Wheels.kD, Constants.PID.Wheels.kFF, Constants.PID.Wheels.kIz, Constants.PID.Wheels.kMinOutput, Constants.PID.Wheels.kMaxOutput, Constants.PID.Wheels.maxVel, Constants.PID.Wheels.minVel, Constants.PID.Wheels.maxAcc, Constants.PID.Wheels.allowedErr);
         sparkWheelFL = new BrushlessSparkWithPID(Constants.SparkIDs.sparkWheelFL, Constants.PID.Wheels.kP, Constants.PID.Wheels.kI, Constants.PID.Wheels.kD, Constants.PID.Wheels.kFF, Constants.PID.Wheels.kIz, Constants.PID.Wheels.kMinOutput, Constants.PID.Wheels.kMaxOutput, Constants.PID.Wheels.maxVel, Constants.PID.Wheels.minVel, Constants.PID.Wheels.maxAcc, Constants.PID.Wheels.allowedErr);

@@ -6,8 +6,7 @@ package org.usfirst.frc706.subsystems;
 import org.usfirst.frc706.Components;
 
 import org.usfirst.frc706.IO;
-
-
+import org.usfirst.frc706.Robot;
 import org.usfirst.frc706.commands.Drive;
 import org.usfirst.frc706.config.Config;
 
@@ -34,6 +33,12 @@ public class Chassis extends Subsystem {
     public double rotationOffset = 0;
 
 	public void periodic() {
+
+		if(IO.xboxManipulator.getAButtonPressed()){
+			Components.limelighttrack.execute();
+		} else {
+			Components.drive.execute();
+		}
 	
 		/* 
 		if(valuesAdded < totalValues){

@@ -1,21 +1,32 @@
 package org.usfirst.frc706.subsystems;
 
-import edu.wpi.first.cscore.HttpCamera;
-import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
-public class Limelight extends Subsystem{
+public class Limelight extends Subsystem {
 
-    private HttpCamera limelightFeed;
+    public static NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+    public static NetworkTableEntry tx = table.getEntry("tx");
+    public static NetworkTableEntry ty = table.getEntry("ty");
 
+    public double x, y;
+    public void periodic() {
+        // read values periodically
+        x = tx.getDouble(0.0);
+        y = ty.getDouble(0.0);
 
-    public void robotInit(){
-        limelightFeed = new HttpCamera("lightlight", "http://10.7.6.65:5800");
+        // post to smart dashboard periodically
+        SmartDashboard.putNumber("LimelightX", x);
+        SmartDashboard.putNumber("LimelightY", y);
     }
+
     @Override
     protected void initDefaultCommand() {
         // TODO Auto-generated method stub
-        
+
     }
-    
+
 }
